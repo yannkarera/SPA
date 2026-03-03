@@ -71,15 +71,15 @@ export function Counter(props) {
   const { label = 'Compteur', targetId } = props;
 
   return `
-    <div class="counter">
-      <h3 class="counter__label">${label}</h3>
-      <div class="counter__display">
+    <div class="flex flex-col items-center gap-4 p-8 border border-gray-300 rounded max-w-xs mx-auto my-8">
+      <h3 class="m-0 text-gray-800">${label}</h3>
+      <div class="text-3xl font-bold text-blue-500">
         <span class="counter__value">${state.count}</span>
       </div>
-      <div class="counter__controls">
-        <button class="btn btn-decrement" type="button">-</button>
-        <button class="btn btn-reset" type="button">Reset</button>
-        <button class="btn btn-increment" type="button">+</button>
+      <div class="flex gap-2">
+        <button class="px-4 py-2 text-lg rounded cursor-pointer transition-opacity hover:opacity-90" type="button">-</button>
+        <button class="px-4 py-2 text-lg rounded cursor-pointer transition-opacity hover:opacity-90 bg-gray-400 text-white" type="button">Reset</button>
+        <button class="px-4 py-2 text-lg rounded cursor-pointer transition-opacity hover:opacity-90  bg-green-500 text-white" type="button">+</button>
       </div>
     </div>
   `;

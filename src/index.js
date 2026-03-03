@@ -1,6 +1,5 @@
 import { router } from "./router/router.js";
 import { ROUTES } from "./config/constants.js";
-
 import { HomePage } from "./pages/HomePage.js";
 import { SpotDetailPage } from "./pages/SpotDetailPage.js";
 import { AddSpotPage } from "./pages/AddSpotPage.js";

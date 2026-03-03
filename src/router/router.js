@@ -34,22 +34,20 @@ class Router{
     /**
      * @param{string} path // Le chemin à afficher
      */
-    handleRoute(path) {
-        if(this.routes[path]){
-            this.render(this.routes[path]());
+async handleRoute(path) {
+    if(this.routes[path]){
+        this.render(await this.routes[path]()); // 👈 await ici
+        return;
+    }
+    for (const route in this.routes){
+        const params = this.matchRoute(route, path);
+        if(params){
+            this.render(await this.routes[route](params)); // 👈 et ici
             return;
         }
-
-        for (const route in this.routes){
-            const params = this.matchRoute(route, path);
-            if(params){
-                this.render(this.routes[route](params));
-                return;
-            }
-        }
-
-        this.render(this.notFoundHandler());
     }
+    this.render(await this.notFoundHandler()); // 👈 et ici
+}
 
     /**
      * @param {string} routePattern // Le modèle de route enregistré
@@ -78,12 +76,12 @@ class Router{
     /**
      *  @param {string} html 
      */
-    render(html) {
-        const app = document.getElementById('app');
-        if (app){
-            app.innerHTML = Layout({ content: html});
-        }
+   async render(html) { // 👈 async
+    const app = document.getElementById('app');
+    if (app){
+        app.innerHTML = Layout({ content: html });
     }
+}
 
     start() {
         document.addEventListener('click', (e) => {

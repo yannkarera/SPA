@@ -11,7 +11,7 @@ export function Layout(props = []){
     const { content = ''} = props;
 
     return `
-    <div class="layout">
+    <div class="min-h-screen flex flex-col">
         ${Header()}
         ${Main({ content })}
         ${Footer()}
